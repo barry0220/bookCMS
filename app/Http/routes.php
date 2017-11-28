@@ -12,7 +12,14 @@
 */
 
 Route::get('/',function(){
-    return 1111111;
+    return redirect('admin/types');
 });
 
-
+//    Route::group(['middleware'=>'login','prefix'=>'admin','namespace'=>'Admin'],function(){
+Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+    Route::resource('/login','LoginController');
+    Route::resource('/user','UserController');
+    Route::resource('/books','BooksController');
+    Route::resource('/booksman','BooksManController');
+    Route::resource('/types','TypeController');
+});
